@@ -1063,6 +1063,33 @@ document.addEventListener('DOMContentLoaded', () => {
         current = (current + 1) % items.length;
         updateSlider();
     }, 3000);
+
+    /* --- ЛОГИКА ВСПЛЫВАЮЩЕГО ОКНА --- */
+    setTimeout(() => {
+        const modal = document.getElementById('promoModal');
+        if (modal) {
+            modal.classList.add('show');
+        }
+    }, 5000); // 5 секунд
+
+    const modal = document.getElementById('promoModal');
+    const closeBtn = document.querySelector('.close-modal');
+
+    // Закрытие по крестику
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+    }
+
+    // Закрытие по клику на фон
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    }
 });
 </script>
 
